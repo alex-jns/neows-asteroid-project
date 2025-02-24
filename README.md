@@ -11,11 +11,19 @@ This project is a simple C# GUI application that allows users to request a 7-day
 
 ## Installation
 
+To be determined.
+
 ## Usage
+
+To be determined.
 
 ## Contributing
 
+To be determined.
+
 ## License
+
+To be determined.
 
 ## Acknowledgements
 
