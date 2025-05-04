@@ -77,7 +77,9 @@ namespace NeoWs_GUI
             }
 
             // Update the date's element count and reset the cursor
-            ElementCountTextBox.Text = NeoListBox.Items.Count.ToString();
+            string elementCount = NeoListBox.Items.Count.ToString();
+            ElementCountTextBox.Text = elementCount;
+            MessageBox.Show($"Search complete. Results returned: {elementCount}");
         }
 
         private async void AdvancedSearch()
@@ -85,12 +87,10 @@ namespace NeoWs_GUI
             // Refresh the list, using the selected date
             await UpdateList();
 
-            // If any Absolute Magnitude filters are selected, filter the list
-            if (!string.IsNullOrEmpty(AbsoluteMagnitudeComboBox.SelectedItem.ToString()))
-            {
-                string absoluteMagnitudeSelectionBox = AbsoluteMagnitudeComboBox.SelectedItem.ToString();
-                SearchAbsoluteMagnitude(absoluteMagnitudeSelectionBox);
-            }
+            SearchAbsoluteMagnitude();
+            SearchPotentiallyDangerousObjects();
+            SearchSentryObjects();
+            SearchRelativeVelocity();
 
             // This should be the very last thing this method does
             DefaultSearch();
@@ -99,8 +99,12 @@ namespace NeoWs_GUI
         /// <summary>
         /// This method should only fire if the user has selected a value from the Absolute Magnitude combo box
         /// </summary>
-        private void SearchAbsoluteMagnitude(string absoluteMagnitudeSelectionBox)
+        private void SearchAbsoluteMagnitude()
         {
+            // Exit if combo box is empty
+            if (AbsoluteMagnitudeComboBox.SelectedItem == null) { return; }
+
+            string absoluteMagnitudeSelectionBox = AbsoluteMagnitudeComboBox.SelectedItem.ToString();
             string textBox = AbsoluteMagnitudeValueBox.Text.Trim();
 
             if (double.TryParse(textBox, out double absoluteMagnitudeValueBox))
@@ -129,6 +133,113 @@ namespace NeoWs_GUI
                     SmallBodyObjectManager.Instance.ListOfSmallBodyObjects = SmallBodyObjectManager.Instance.ListOfSmallBodyObjects
                         .Where(obj => Convert.ToDouble(obj.AbsoluteMagnitude) == absoluteMagnitudeValueBox).ToList();
                     break;
+            }
+        }
+
+        private void SearchRelativeVelocity()
+        {
+            // Both combo boxes must have a value selected in order to proceed
+            if (RelativeVelocityComboBox1.SelectedItem == null) { return; }
+            if (RelativeVelocityComboBox2.SelectedItem == null) { return; }
+
+            string relativeVelocityType = RelativeVelocityComboBox1.SelectedItem.ToString();
+            string relativeVelocityComparison = RelativeVelocityComboBox2.SelectedItem.ToString();
+            string textBox = RelativeVelocityValueTextBox.Text.Trim();
+
+            // Attempt to convert contents of the text box to a double
+            if (double.TryParse(textBox, out double relativeVelocitySpeed))
+            {
+                // Method will exit if TryParse fails
+                // Otherwise it will continue
+            }
+            else
+            {
+                MessageBox.Show("Please enter a valid numeric value for Relative Velocity.");
+                return;
+            }
+
+            // Nested switch cases handle the 9 different combinations of the two combo boxes
+            switch (relativeVelocityType)
+            {
+                case "km/s":
+                    switch (relativeVelocityComparison)
+                    {
+                        case ">":
+                            SmallBodyObjectManager.Instance.ListOfSmallBodyObjects = SmallBodyObjectManager.Instance.ListOfSmallBodyObjects
+                                .Where(obj => Convert.ToDouble(obj.RelativeVelocityInKilometersPerSecond) > relativeVelocitySpeed).ToList();
+                            break;
+                        case "<":
+                            SmallBodyObjectManager.Instance.ListOfSmallBodyObjects = SmallBodyObjectManager.Instance.ListOfSmallBodyObjects
+                                .Where(obj => Convert.ToDouble(obj.RelativeVelocityInKilometersPerSecond) < relativeVelocitySpeed).ToList();
+                            break;
+                        case "=":
+                            SmallBodyObjectManager.Instance.ListOfSmallBodyObjects = SmallBodyObjectManager.Instance.ListOfSmallBodyObjects
+                                .Where(obj => Convert.ToDouble(obj.RelativeVelocityInKilometersPerSecond) == relativeVelocitySpeed).ToList();
+                            break;
+                    }
+                    break;
+
+                case "km/h":
+                    switch (relativeVelocityComparison)
+                    {
+                        case ">":
+                            SmallBodyObjectManager.Instance.ListOfSmallBodyObjects = SmallBodyObjectManager.Instance.ListOfSmallBodyObjects
+                                .Where(obj => Convert.ToDouble(obj.RelativeVelocityInKilometersPerHour) > relativeVelocitySpeed).ToList();
+                            break;
+                        case "<":
+                            SmallBodyObjectManager.Instance.ListOfSmallBodyObjects = SmallBodyObjectManager.Instance.ListOfSmallBodyObjects
+                                .Where(obj => Convert.ToDouble(obj.RelativeVelocityInKilometersPerHour) < relativeVelocitySpeed).ToList();
+                            break;
+                        case "=":
+                            SmallBodyObjectManager.Instance.ListOfSmallBodyObjects = SmallBodyObjectManager.Instance.ListOfSmallBodyObjects
+                                .Where(obj => Convert.ToDouble(obj.RelativeVelocityInKilometersPerHour) == relativeVelocitySpeed).ToList();
+                            break;
+                    }
+                    break;
+
+                case "mph":
+                    switch (relativeVelocityComparison)
+                    {
+                        case ">":
+                            SmallBodyObjectManager.Instance.ListOfSmallBodyObjects = SmallBodyObjectManager.Instance.ListOfSmallBodyObjects
+                                .Where(obj => Convert.ToDouble(obj.RelativeVelocityInMilesPerHour) > relativeVelocitySpeed).ToList();
+                            break;
+                        case "<":
+                            SmallBodyObjectManager.Instance.ListOfSmallBodyObjects = SmallBodyObjectManager.Instance.ListOfSmallBodyObjects
+                                .Where(obj => Convert.ToDouble(obj.RelativeVelocityInMilesPerHour) < relativeVelocitySpeed).ToList();
+                            break;
+                        case "=":
+                            SmallBodyObjectManager.Instance.ListOfSmallBodyObjects = SmallBodyObjectManager.Instance.ListOfSmallBodyObjects
+                                .Where(obj => Convert.ToDouble(obj.RelativeVelocityInMilesPerHour) == relativeVelocitySpeed).ToList();
+                            break;
+                    }
+                    break;
+            }
+        }
+
+        private void SearchPotentiallyDangerousObjects()
+        {
+            if (IsPotentiallyHazardousCheckBox.Checked)
+            {
+                SmallBodyObjectManager.Instance.ListOfSmallBodyObjects = SmallBodyObjectManager.Instance.ListOfSmallBodyObjects
+                        .Where(obj => obj.IsPotentiallyHazardousAsteroid == "Yes").ToList();
+            }
+            else
+            {
+                return;
+            }
+        }
+
+        private void SearchSentryObjects()
+        {
+            if (IsPotentiallyHazardousCheckBox.Checked)
+            {
+                SmallBodyObjectManager.Instance.ListOfSmallBodyObjects = SmallBodyObjectManager.Instance.ListOfSmallBodyObjects
+                        .Where(obj => obj.IsSentryObject == "Yes").ToList();
+            }
+            else
+            {
+                return;
             }
         }
 
@@ -184,6 +295,20 @@ namespace NeoWs_GUI
             {
                 MessageBox.Show("No matching object found.");
             }
+        }
+
+        /// <summary>
+        /// Clears any selected advanced search parameters
+        /// </summary>
+        private void AdvancedSearchClearButton_Click(object sender, EventArgs e)
+        {
+            AbsoluteMagnitudeComboBox.SelectedIndex = -1;
+            AbsoluteMagnitudeValueBox.Text = "";
+            RelativeVelocityComboBox1.SelectedIndex = -1;
+            RelativeVelocityComboBox2.SelectedIndex = -1;
+            RelativeVelocityValueTextBox.Text = "";
+            IsPotentiallyHazardousCheckBox.Checked = false;
+            IsSentryObjectCheckBox.Checked = false;
         }
     }
 }

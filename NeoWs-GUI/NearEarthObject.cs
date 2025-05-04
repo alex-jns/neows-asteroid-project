@@ -4,6 +4,7 @@ using Newtonsoft.Json.Linq;
 using RestSharp;
 using System;
 using System.IO;
+using System.Net.Http;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -43,10 +44,19 @@ namespace CS2_Project
             string apiKey = "DEMO_KEY";
             RestClient client = new RestClient("https://api.nasa.gov/");
             RestRequest request = new RestRequest($"neo/rest/v1/feed?start_date={date}&end_date={date}&api_key={apiKey}");
-            RestResponse response = await client.GetAsync(request);
-            JObject jsonObject = JsonConvert.DeserializeObject<JObject>(response.Content);
-            SmallBodyObject smallBody = new SmallBodyObject();
-            smallBody.ConvertJObjectToList(jsonObject, date);
+            try
+            { 
+                RestResponse response = await client.GetAsync(request);
+                JObject jsonObject = JsonConvert.DeserializeObject<JObject>(response.Content);
+                SmallBodyObject smallBody = new SmallBodyObject();
+                smallBody.ConvertJObjectToList(jsonObject, date);
+            }
+            catch (HttpRequestException)
+            {
+                // This happens if the API key DEMO_KEY runs out of free uses
+                // Restricted to about 25-50 per day per IP address
+                MessageBox.Show("Could not connect to the API.");
+            }
         }
 
         public string ValidateDate(string inputDate)

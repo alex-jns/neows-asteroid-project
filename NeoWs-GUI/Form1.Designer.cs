@@ -32,9 +32,9 @@
             this.NeoListBox = new System.Windows.Forms.ListBox();
             this.ShowInformationButton = new System.Windows.Forms.Button();
             this.RetrieveDataGroupBox = new System.Windows.Forms.GroupBox();
-            this.AdvancedSearchButton = new System.Windows.Forms.Button();
             this.DateTextBox = new System.Windows.Forms.TextBox();
             this.DateLabel = new System.Windows.Forms.Label();
+            this.AdvancedSearchButton = new System.Windows.Forms.Button();
             this.GeneralInformationGroupBox = new System.Windows.Forms.GroupBox();
             this.PotentiallyHazardousTextBox = new System.Windows.Forms.TextBox();
             this.SentryObjectTextBox = new System.Windows.Forms.TextBox();
@@ -89,9 +89,16 @@
             this.ElementCountLabel = new System.Windows.Forms.Label();
             this.ElementCountTextBox = new System.Windows.Forms.TextBox();
             this.AdvancedSearchGroupBox = new System.Windows.Forms.GroupBox();
-            this.AbsoluteMagnitudeAdvancedLabel = new System.Windows.Forms.Label();
-            this.AbsoluteMagnitudeComboBox = new System.Windows.Forms.ComboBox();
+            this.RelativeVelocityComboBox1 = new System.Windows.Forms.ComboBox();
+            this.RelativeVelocityValueTextBox = new System.Windows.Forms.TextBox();
+            this.RelativeVelocityComboBox2 = new System.Windows.Forms.ComboBox();
+            this.RelativeVelocityAdvancedLabel = new System.Windows.Forms.Label();
+            this.IsSentryObjectCheckBox = new System.Windows.Forms.CheckBox();
+            this.IsPotentiallyHazardousCheckBox = new System.Windows.Forms.CheckBox();
             this.AbsoluteMagnitudeValueBox = new System.Windows.Forms.TextBox();
+            this.AbsoluteMagnitudeComboBox = new System.Windows.Forms.ComboBox();
+            this.AbsoluteMagnitudeAdvancedLabel = new System.Windows.Forms.Label();
+            this.AdvancedSearchClearButton = new System.Windows.Forms.Button();
             this.RetrieveDataGroupBox.SuspendLayout();
             this.GeneralInformationGroupBox.SuspendLayout();
             this.EstimatedDiameterGroupBox.SuspendLayout();
@@ -142,16 +149,6 @@
             this.RetrieveDataGroupBox.TabStop = false;
             this.RetrieveDataGroupBox.Text = "Retrieve Data";
             // 
-            // AdvancedSearchButton
-            // 
-            this.AdvancedSearchButton.Location = new System.Drawing.Point(641, 415);
-            this.AdvancedSearchButton.Name = "AdvancedSearchButton";
-            this.AdvancedSearchButton.Size = new System.Drawing.Size(101, 23);
-            this.AdvancedSearchButton.TabIndex = 11;
-            this.AdvancedSearchButton.Text = "Advanced Search";
-            this.AdvancedSearchButton.UseVisualStyleBackColor = true;
-            this.AdvancedSearchButton.Click += new System.EventHandler(this.AdvancedSearchButton_Click);
-            // 
             // DateTextBox
             // 
             this.DateTextBox.Location = new System.Drawing.Point(45, 20);
@@ -169,6 +166,16 @@
             this.DateLabel.Size = new System.Drawing.Size(33, 13);
             this.DateLabel.TabIndex = 1;
             this.DateLabel.Text = "Date:";
+            // 
+            // AdvancedSearchButton
+            // 
+            this.AdvancedSearchButton.Location = new System.Drawing.Point(641, 415);
+            this.AdvancedSearchButton.Name = "AdvancedSearchButton";
+            this.AdvancedSearchButton.Size = new System.Drawing.Size(101, 23);
+            this.AdvancedSearchButton.TabIndex = 11;
+            this.AdvancedSearchButton.Text = "Advanced Search";
+            this.AdvancedSearchButton.UseVisualStyleBackColor = true;
+            this.AdvancedSearchButton.Click += new System.EventHandler(this.AdvancedSearchButton_Click);
             // 
             // GeneralInformationGroupBox
             // 
@@ -698,6 +705,12 @@
             // 
             // AdvancedSearchGroupBox
             // 
+            this.AdvancedSearchGroupBox.Controls.Add(this.RelativeVelocityComboBox1);
+            this.AdvancedSearchGroupBox.Controls.Add(this.RelativeVelocityValueTextBox);
+            this.AdvancedSearchGroupBox.Controls.Add(this.RelativeVelocityComboBox2);
+            this.AdvancedSearchGroupBox.Controls.Add(this.RelativeVelocityAdvancedLabel);
+            this.AdvancedSearchGroupBox.Controls.Add(this.IsSentryObjectCheckBox);
+            this.AdvancedSearchGroupBox.Controls.Add(this.IsPotentiallyHazardousCheckBox);
             this.AdvancedSearchGroupBox.Controls.Add(this.AbsoluteMagnitudeValueBox);
             this.AdvancedSearchGroupBox.Controls.Add(this.AbsoluteMagnitudeComboBox);
             this.AdvancedSearchGroupBox.Controls.Add(this.AbsoluteMagnitudeAdvancedLabel);
@@ -708,17 +721,78 @@
             this.AdvancedSearchGroupBox.TabStop = false;
             this.AdvancedSearchGroupBox.Text = "Advanced Search";
             // 
-            // AbsoluteMagnitudeAdvancedLabel
+            // RelativeVelocityComboBox1
             // 
-            this.AbsoluteMagnitudeAdvancedLabel.AutoSize = true;
-            this.AbsoluteMagnitudeAdvancedLabel.Location = new System.Drawing.Point(7, 21);
-            this.AbsoluteMagnitudeAdvancedLabel.Name = "AbsoluteMagnitudeAdvancedLabel";
-            this.AbsoluteMagnitudeAdvancedLabel.Size = new System.Drawing.Size(101, 13);
-            this.AbsoluteMagnitudeAdvancedLabel.TabIndex = 0;
-            this.AbsoluteMagnitudeAdvancedLabel.Text = "Absolute Magnitude";
+            this.RelativeVelocityComboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.RelativeVelocityComboBox1.FormattingEnabled = true;
+            this.RelativeVelocityComboBox1.Items.AddRange(new object[] {
+            "km/s",
+            "km/h",
+            "mph"});
+            this.RelativeVelocityComboBox1.Location = new System.Drawing.Point(102, 45);
+            this.RelativeVelocityComboBox1.Name = "RelativeVelocityComboBox1";
+            this.RelativeVelocityComboBox1.Size = new System.Drawing.Size(51, 21);
+            this.RelativeVelocityComboBox1.TabIndex = 10;
+            // 
+            // RelativeVelocityValueTextBox
+            // 
+            this.RelativeVelocityValueTextBox.Location = new System.Drawing.Point(216, 46);
+            this.RelativeVelocityValueTextBox.Name = "RelativeVelocityValueTextBox";
+            this.RelativeVelocityValueTextBox.Size = new System.Drawing.Size(55, 20);
+            this.RelativeVelocityValueTextBox.TabIndex = 9;
+            // 
+            // RelativeVelocityComboBox2
+            // 
+            this.RelativeVelocityComboBox2.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.RelativeVelocityComboBox2.FormattingEnabled = true;
+            this.RelativeVelocityComboBox2.Items.AddRange(new object[] {
+            ">",
+            "<",
+            "="});
+            this.RelativeVelocityComboBox2.Location = new System.Drawing.Point(159, 45);
+            this.RelativeVelocityComboBox2.Name = "RelativeVelocityComboBox2";
+            this.RelativeVelocityComboBox2.Size = new System.Drawing.Size(51, 21);
+            this.RelativeVelocityComboBox2.TabIndex = 8;
+            // 
+            // RelativeVelocityAdvancedLabel
+            // 
+            this.RelativeVelocityAdvancedLabel.AutoSize = true;
+            this.RelativeVelocityAdvancedLabel.Location = new System.Drawing.Point(8, 49);
+            this.RelativeVelocityAdvancedLabel.Name = "RelativeVelocityAdvancedLabel";
+            this.RelativeVelocityAdvancedLabel.Size = new System.Drawing.Size(86, 13);
+            this.RelativeVelocityAdvancedLabel.TabIndex = 7;
+            this.RelativeVelocityAdvancedLabel.Text = "Relative Velocity";
+            // 
+            // IsSentryObjectCheckBox
+            // 
+            this.IsSentryObjectCheckBox.AutoSize = true;
+            this.IsSentryObjectCheckBox.Location = new System.Drawing.Point(159, 74);
+            this.IsSentryObjectCheckBox.Name = "IsSentryObjectCheckBox";
+            this.IsSentryObjectCheckBox.Size = new System.Drawing.Size(110, 17);
+            this.IsSentryObjectCheckBox.TabIndex = 6;
+            this.IsSentryObjectCheckBox.Text = "Is a Sentry Object";
+            this.IsSentryObjectCheckBox.UseVisualStyleBackColor = true;
+            // 
+            // IsPotentiallyHazardousCheckBox
+            // 
+            this.IsPotentiallyHazardousCheckBox.AutoSize = true;
+            this.IsPotentiallyHazardousCheckBox.Location = new System.Drawing.Point(14, 74);
+            this.IsPotentiallyHazardousCheckBox.Name = "IsPotentiallyHazardousCheckBox";
+            this.IsPotentiallyHazardousCheckBox.Size = new System.Drawing.Size(139, 17);
+            this.IsPotentiallyHazardousCheckBox.TabIndex = 5;
+            this.IsPotentiallyHazardousCheckBox.Text = "Is Potentially Hazardous";
+            this.IsPotentiallyHazardousCheckBox.UseVisualStyleBackColor = true;
+            // 
+            // AbsoluteMagnitudeValueBox
+            // 
+            this.AbsoluteMagnitudeValueBox.Location = new System.Drawing.Point(216, 20);
+            this.AbsoluteMagnitudeValueBox.Name = "AbsoluteMagnitudeValueBox";
+            this.AbsoluteMagnitudeValueBox.Size = new System.Drawing.Size(55, 20);
+            this.AbsoluteMagnitudeValueBox.TabIndex = 2;
             // 
             // AbsoluteMagnitudeComboBox
             // 
+            this.AbsoluteMagnitudeComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.AbsoluteMagnitudeComboBox.FormattingEnabled = true;
             this.AbsoluteMagnitudeComboBox.Items.AddRange(new object[] {
             "is greater than",
@@ -729,18 +803,31 @@
             this.AbsoluteMagnitudeComboBox.Size = new System.Drawing.Size(96, 21);
             this.AbsoluteMagnitudeComboBox.TabIndex = 1;
             // 
-            // AbsoluteMagnitudeValueBox
+            // AbsoluteMagnitudeAdvancedLabel
             // 
-            this.AbsoluteMagnitudeValueBox.Location = new System.Drawing.Point(216, 20);
-            this.AbsoluteMagnitudeValueBox.Name = "AbsoluteMagnitudeValueBox";
-            this.AbsoluteMagnitudeValueBox.Size = new System.Drawing.Size(55, 20);
-            this.AbsoluteMagnitudeValueBox.TabIndex = 2;
+            this.AbsoluteMagnitudeAdvancedLabel.AutoSize = true;
+            this.AbsoluteMagnitudeAdvancedLabel.Location = new System.Drawing.Point(7, 21);
+            this.AbsoluteMagnitudeAdvancedLabel.Name = "AbsoluteMagnitudeAdvancedLabel";
+            this.AbsoluteMagnitudeAdvancedLabel.Size = new System.Drawing.Size(101, 13);
+            this.AbsoluteMagnitudeAdvancedLabel.TabIndex = 0;
+            this.AbsoluteMagnitudeAdvancedLabel.Text = "Absolute Magnitude";
+            // 
+            // AdvancedSearchClearButton
+            // 
+            this.AdvancedSearchClearButton.Location = new System.Drawing.Point(560, 415);
+            this.AdvancedSearchClearButton.Name = "AdvancedSearchClearButton";
+            this.AdvancedSearchClearButton.Size = new System.Drawing.Size(75, 23);
+            this.AdvancedSearchClearButton.TabIndex = 12;
+            this.AdvancedSearchClearButton.Text = "Clear";
+            this.AdvancedSearchClearButton.UseVisualStyleBackColor = true;
+            this.AdvancedSearchClearButton.Click += new System.EventHandler(this.AdvancedSearchClearButton_Click);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(754, 450);
+            this.Controls.Add(this.AdvancedSearchClearButton);
             this.Controls.Add(this.AdvancedSearchButton);
             this.Controls.Add(this.AdvancedSearchGroupBox);
             this.Controls.Add(this.ElementCountTextBox);
@@ -843,6 +930,13 @@
         private System.Windows.Forms.TextBox AbsoluteMagnitudeValueBox;
         private System.Windows.Forms.ComboBox AbsoluteMagnitudeComboBox;
         private System.Windows.Forms.Label AbsoluteMagnitudeAdvancedLabel;
+        private System.Windows.Forms.CheckBox IsPotentiallyHazardousCheckBox;
+        private System.Windows.Forms.CheckBox IsSentryObjectCheckBox;
+        private System.Windows.Forms.Label RelativeVelocityAdvancedLabel;
+        private System.Windows.Forms.ComboBox RelativeVelocityComboBox1;
+        private System.Windows.Forms.TextBox RelativeVelocityValueTextBox;
+        private System.Windows.Forms.ComboBox RelativeVelocityComboBox2;
+        private System.Windows.Forms.Button AdvancedSearchClearButton;
     }
 }
 
