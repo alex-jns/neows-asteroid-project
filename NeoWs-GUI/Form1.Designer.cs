@@ -28,6 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.SearchButton = new System.Windows.Forms.Button();
             this.NeoListBox = new System.Windows.Forms.ListBox();
             this.ShowInformationButton = new System.Windows.Forms.Button();
@@ -99,6 +101,7 @@
             this.AbsoluteMagnitudeComboBox = new System.Windows.Forms.ComboBox();
             this.AbsoluteMagnitudeAdvancedLabel = new System.Windows.Forms.Label();
             this.AdvancedSearchClearButton = new System.Windows.Forms.Button();
+            this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.RetrieveDataGroupBox.SuspendLayout();
             this.GeneralInformationGroupBox.SuspendLayout();
             this.EstimatedDiameterGroupBox.SuspendLayout();
@@ -126,6 +129,8 @@
             this.NeoListBox.Name = "NeoListBox";
             this.NeoListBox.Size = new System.Drawing.Size(200, 290);
             this.NeoListBox.TabIndex = 1;
+            this.toolTip1.SetToolTip(this.NeoListBox, "Contains a list of near earth objects searched by date.\r\nSelect an item and see \"" +
+        "Show Information\" below.");
             // 
             // ShowInformationButton
             // 
@@ -134,6 +139,8 @@
             this.ShowInformationButton.Size = new System.Drawing.Size(200, 23);
             this.ShowInformationButton.TabIndex = 2;
             this.ShowInformationButton.Text = "Show Information";
+            this.toolTip1.SetToolTip(this.ShowInformationButton, "Select an item from the list above, then click this to populate the fields on the" +
+        " right.");
             this.ShowInformationButton.UseVisualStyleBackColor = true;
             this.ShowInformationButton.Click += new System.EventHandler(this.ShowInformationButton_Click);
             // 
@@ -157,6 +164,8 @@
             this.DateTextBox.TabIndex = 2;
             this.DateTextBox.Text = "YYYY-MM-DD";
             this.DateTextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.toolTip1.SetToolTip(this.DateTextBox, "Enter a valid date in the YYYY-MM-DD format to search for a list of near earth ob" +
+        "jects.\r\nExample: \"2025-05-30\"");
             // 
             // DateLabel
             // 
@@ -166,6 +175,8 @@
             this.DateLabel.Size = new System.Drawing.Size(33, 13);
             this.DateLabel.TabIndex = 1;
             this.DateLabel.Text = "Date:";
+            this.toolTip1.SetToolTip(this.DateLabel, "Enter a valid date in the YYYY-MM-DD format to search for a list of near earth ob" +
+        "jects.\r\nExample: \"2025-05-30\"");
             // 
             // AdvancedSearchButton
             // 
@@ -208,6 +219,9 @@
             this.PotentiallyHazardousTextBox.ReadOnly = true;
             this.PotentiallyHazardousTextBox.Size = new System.Drawing.Size(60, 20);
             this.PotentiallyHazardousTextBox.TabIndex = 14;
+            this.toolTip1.SetToolTip(this.PotentiallyHazardousTextBox, "A near earth object that meets two criteria:\r\n1. Minimum Orbit Intersection Dista" +
+        "nce is less than 7.5 million kilometers.\r\n2. Absolute Magnitude is less than 22," +
+        " which implies a large diameter.\r\n");
             // 
             // SentryObjectTextBox
             // 
@@ -217,6 +231,7 @@
             this.SentryObjectTextBox.ReadOnly = true;
             this.SentryObjectTextBox.Size = new System.Drawing.Size(46, 20);
             this.SentryObjectTextBox.TabIndex = 13;
+            this.toolTip1.SetToolTip(this.SentryObjectTextBox, resources.GetString("SentryObjectTextBox.ToolTip"));
             // 
             // SentryObjectLabel
             // 
@@ -226,6 +241,7 @@
             this.SentryObjectLabel.Size = new System.Drawing.Size(74, 13);
             this.SentryObjectLabel.TabIndex = 12;
             this.SentryObjectLabel.Text = "Sentry Object:";
+            this.toolTip1.SetToolTip(this.SentryObjectLabel, resources.GetString("SentryObjectLabel.ToolTip"));
             // 
             // AbsoluteMagnitudeTextBox
             // 
@@ -235,6 +251,7 @@
             this.AbsoluteMagnitudeTextBox.ReadOnly = true;
             this.AbsoluteMagnitudeTextBox.Size = new System.Drawing.Size(49, 20);
             this.AbsoluteMagnitudeTextBox.TabIndex = 10;
+            this.toolTip1.SetToolTip(this.AbsoluteMagnitudeTextBox, "The measure of a small body\'s intrinsic brightness.");
             // 
             // PotentiallyHazardousLabel
             // 
@@ -244,6 +261,9 @@
             this.PotentiallyHazardousLabel.Size = new System.Drawing.Size(112, 13);
             this.PotentiallyHazardousLabel.TabIndex = 11;
             this.PotentiallyHazardousLabel.Text = "Potentially Hazardous:";
+            this.toolTip1.SetToolTip(this.PotentiallyHazardousLabel, "A near earth object that meets two criteria:\r\n1. Minimum Orbit Intersection Dista" +
+        "nce is less than 7.5 million kilometers.\r\n2. Absolute Magnitude is less than 22," +
+        " which implies a large diameter.");
             // 
             // CloseApproachDateTextBox
             // 
@@ -253,6 +273,8 @@
             this.CloseApproachDateTextBox.ReadOnly = true;
             this.CloseApproachDateTextBox.Size = new System.Drawing.Size(182, 20);
             this.CloseApproachDateTextBox.TabIndex = 9;
+            this.toolTip1.SetToolTip(this.CloseApproachDateTextBox, "The specific time when a small body passes closest to its orbiting body.\r\nTime is" +
+        " represented in UTC or Coordinated Universal Time.\r\n");
             // 
             // OrbitingBodyTextBox
             // 
@@ -262,6 +284,7 @@
             this.OrbitingBodyTextBox.ReadOnly = true;
             this.OrbitingBodyTextBox.Size = new System.Drawing.Size(61, 20);
             this.OrbitingBodyTextBox.TabIndex = 8;
+            this.toolTip1.SetToolTip(this.OrbitingBodyTextBox, "Refers to the primary (central) body around which a small body is orbiting.");
             // 
             // IDTextBox
             // 
@@ -271,6 +294,7 @@
             this.IDTextBox.ReadOnly = true;
             this.IDTextBox.Size = new System.Drawing.Size(79, 20);
             this.IDTextBox.TabIndex = 7;
+            this.toolTip1.SetToolTip(this.IDTextBox, "Unique identifier associated with the asteroid or comet.");
             // 
             // NameTextBox
             // 
@@ -280,6 +304,9 @@
             this.NameTextBox.ReadOnly = true;
             this.NameTextBox.Size = new System.Drawing.Size(143, 20);
             this.NameTextBox.TabIndex = 6;
+            this.toolTip1.SetToolTip(this.NameTextBox, "The provisional designation of the near earth object.\r\nTypically named by year, f" +
+        "ollowed by a letter indicating the half-month,\r\nand another letter indicating th" +
+        "e sequence.\r\n");
             // 
             // AbsoluteMagnitudeLabel
             // 
@@ -289,6 +316,7 @@
             this.AbsoluteMagnitudeLabel.Size = new System.Drawing.Size(104, 13);
             this.AbsoluteMagnitudeLabel.TabIndex = 5;
             this.AbsoluteMagnitudeLabel.Text = "Absolute Magnitude:";
+            this.toolTip1.SetToolTip(this.AbsoluteMagnitudeLabel, "The measure of a small body\'s intrinsic brightness.");
             // 
             // CloseApproachDateLabel
             // 
@@ -298,6 +326,8 @@
             this.CloseApproachDateLabel.Size = new System.Drawing.Size(111, 13);
             this.CloseApproachDateLabel.TabIndex = 4;
             this.CloseApproachDateLabel.Text = "Close Approach Date:";
+            this.toolTip1.SetToolTip(this.CloseApproachDateLabel, "The specific time when a small body passes closest to its orbiting body.\r\nTime is" +
+        " represented in UTC or Coordinated Universal Time.");
             // 
             // OrbitingBodyLabel
             // 
@@ -307,6 +337,7 @@
             this.OrbitingBodyLabel.Size = new System.Drawing.Size(73, 13);
             this.OrbitingBodyLabel.TabIndex = 3;
             this.OrbitingBodyLabel.Text = "Orbiting Body:";
+            this.toolTip1.SetToolTip(this.OrbitingBodyLabel, "Refers to the primary (central) body around which a small body is orbiting.");
             // 
             // IDLabel
             // 
@@ -316,6 +347,7 @@
             this.IDLabel.Size = new System.Drawing.Size(21, 13);
             this.IDLabel.TabIndex = 2;
             this.IDLabel.Text = "ID:";
+            this.toolTip1.SetToolTip(this.IDLabel, "Unique identifier associated with the asteroid or comet.");
             // 
             // NameLabel
             // 
@@ -325,6 +357,9 @@
             this.NameLabel.Size = new System.Drawing.Size(38, 13);
             this.NameLabel.TabIndex = 1;
             this.NameLabel.Text = "Name:";
+            this.toolTip1.SetToolTip(this.NameLabel, "The provisional designation of the near earth object.\r\nTypically named by year, f" +
+        "ollowed by a letter indicating the half-month,\r\nand another letter indicating th" +
+        "e sequence.");
             // 
             // EstimatedDiameterGroupBox
             // 
@@ -362,6 +397,7 @@
             this.MaximumKilometersTextBox.ReadOnly = true;
             this.MaximumKilometersTextBox.Size = new System.Drawing.Size(159, 20);
             this.MaximumKilometersTextBox.TabIndex = 18;
+            this.toolTip1.SetToolTip(this.MaximumKilometersTextBox, resources.GetString("MaximumKilometersTextBox.ToolTip"));
             // 
             // MaximumMetersLabel
             // 
@@ -371,6 +407,7 @@
             this.MaximumMetersLabel.Size = new System.Drawing.Size(42, 13);
             this.MaximumMetersLabel.TabIndex = 13;
             this.MaximumMetersLabel.Text = "Meters:";
+            this.toolTip1.SetToolTip(this.MaximumMetersLabel, resources.GetString("MaximumMetersLabel.ToolTip"));
             // 
             // MaximumKilometersLabel
             // 
@@ -380,6 +417,7 @@
             this.MaximumKilometersLabel.Size = new System.Drawing.Size(58, 13);
             this.MaximumKilometersLabel.TabIndex = 17;
             this.MaximumKilometersLabel.Text = "Kilometers:";
+            this.toolTip1.SetToolTip(this.MaximumKilometersLabel, resources.GetString("MaximumKilometersLabel.ToolTip"));
             // 
             // MaximumFeetLabel
             // 
@@ -389,6 +427,7 @@
             this.MaximumFeetLabel.Size = new System.Drawing.Size(31, 13);
             this.MaximumFeetLabel.TabIndex = 11;
             this.MaximumFeetLabel.Text = "Feet:";
+            this.toolTip1.SetToolTip(this.MaximumFeetLabel, resources.GetString("MaximumFeetLabel.ToolTip"));
             // 
             // MaximumMilesTextBox
             // 
@@ -398,6 +437,7 @@
             this.MaximumMilesTextBox.ReadOnly = true;
             this.MaximumMilesTextBox.Size = new System.Drawing.Size(159, 20);
             this.MaximumMilesTextBox.TabIndex = 16;
+            this.toolTip1.SetToolTip(this.MaximumMilesTextBox, resources.GetString("MaximumMilesTextBox.ToolTip"));
             // 
             // MaximumFeetTextBox
             // 
@@ -407,6 +447,7 @@
             this.MaximumFeetTextBox.ReadOnly = true;
             this.MaximumFeetTextBox.Size = new System.Drawing.Size(159, 20);
             this.MaximumFeetTextBox.TabIndex = 12;
+            this.toolTip1.SetToolTip(this.MaximumFeetTextBox, resources.GetString("MaximumFeetTextBox.ToolTip"));
             // 
             // MaximumMilesLabel
             // 
@@ -416,6 +457,7 @@
             this.MaximumMilesLabel.Size = new System.Drawing.Size(34, 13);
             this.MaximumMilesLabel.TabIndex = 15;
             this.MaximumMilesLabel.Text = "Miles:";
+            this.toolTip1.SetToolTip(this.MaximumMilesLabel, resources.GetString("MaximumMilesLabel.ToolTip"));
             // 
             // MaximumMetersTextBox
             // 
@@ -425,6 +467,7 @@
             this.MaximumMetersTextBox.ReadOnly = true;
             this.MaximumMetersTextBox.Size = new System.Drawing.Size(159, 20);
             this.MaximumMetersTextBox.TabIndex = 14;
+            this.toolTip1.SetToolTip(this.MaximumMetersTextBox, resources.GetString("MaximumMetersTextBox.ToolTip"));
             // 
             // MinimumGroupBox
             // 
@@ -451,6 +494,7 @@
             this.MinimumKilometersTextBox.ReadOnly = true;
             this.MinimumKilometersTextBox.Size = new System.Drawing.Size(159, 20);
             this.MinimumKilometersTextBox.TabIndex = 10;
+            this.toolTip1.SetToolTip(this.MinimumKilometersTextBox, resources.GetString("MinimumKilometersTextBox.ToolTip"));
             // 
             // MinimumKilometersLabel
             // 
@@ -460,6 +504,7 @@
             this.MinimumKilometersLabel.Size = new System.Drawing.Size(58, 13);
             this.MinimumKilometersLabel.TabIndex = 9;
             this.MinimumKilometersLabel.Text = "Kilometers:";
+            this.toolTip1.SetToolTip(this.MinimumKilometersLabel, resources.GetString("MinimumKilometersLabel.ToolTip"));
             // 
             // MinimumMilesTextBox
             // 
@@ -469,6 +514,7 @@
             this.MinimumMilesTextBox.ReadOnly = true;
             this.MinimumMilesTextBox.Size = new System.Drawing.Size(159, 20);
             this.MinimumMilesTextBox.TabIndex = 8;
+            this.toolTip1.SetToolTip(this.MinimumMilesTextBox, resources.GetString("MinimumMilesTextBox.ToolTip"));
             // 
             // MinimumMilesLabel
             // 
@@ -478,6 +524,7 @@
             this.MinimumMilesLabel.Size = new System.Drawing.Size(34, 13);
             this.MinimumMilesLabel.TabIndex = 7;
             this.MinimumMilesLabel.Text = "Miles:";
+            this.toolTip1.SetToolTip(this.MinimumMilesLabel, resources.GetString("MinimumMilesLabel.ToolTip"));
             // 
             // MinimumMetersTextBox
             // 
@@ -487,6 +534,7 @@
             this.MinimumMetersTextBox.ReadOnly = true;
             this.MinimumMetersTextBox.Size = new System.Drawing.Size(159, 20);
             this.MinimumMetersTextBox.TabIndex = 6;
+            this.toolTip1.SetToolTip(this.MinimumMetersTextBox, resources.GetString("MinimumMetersTextBox.ToolTip"));
             // 
             // MinimumMetersLabel
             // 
@@ -496,6 +544,7 @@
             this.MinimumMetersLabel.Size = new System.Drawing.Size(42, 13);
             this.MinimumMetersLabel.TabIndex = 5;
             this.MinimumMetersLabel.Text = "Meters:";
+            this.toolTip1.SetToolTip(this.MinimumMetersLabel, resources.GetString("MinimumMetersLabel.ToolTip"));
             // 
             // MinimumFeetTextBox
             // 
@@ -505,6 +554,7 @@
             this.MinimumFeetTextBox.ReadOnly = true;
             this.MinimumFeetTextBox.Size = new System.Drawing.Size(159, 20);
             this.MinimumFeetTextBox.TabIndex = 4;
+            this.toolTip1.SetToolTip(this.MinimumFeetTextBox, resources.GetString("MinimumFeetTextBox.ToolTip"));
             // 
             // MinimumFeetLabel
             // 
@@ -514,6 +564,7 @@
             this.MinimumFeetLabel.Size = new System.Drawing.Size(31, 13);
             this.MinimumFeetLabel.TabIndex = 0;
             this.MinimumFeetLabel.Text = "Feet:";
+            this.toolTip1.SetToolTip(this.MinimumFeetLabel, resources.GetString("MinimumFeetLabel.ToolTip"));
             // 
             // groupBox4
             // 
@@ -538,6 +589,8 @@
             this.MilesPerHourTextBox.ReadOnly = true;
             this.MilesPerHourTextBox.Size = new System.Drawing.Size(100, 20);
             this.MilesPerHourTextBox.TabIndex = 5;
+            this.toolTip1.SetToolTip(this.MilesPerHourTextBox, "The speed at which a near earth object is moving relative to Earth.\r\nThis speed i" +
+        "s taken during the object\'s close approach.");
             // 
             // KilometersPerHourTextBox
             // 
@@ -547,6 +600,8 @@
             this.KilometersPerHourTextBox.ReadOnly = true;
             this.KilometersPerHourTextBox.Size = new System.Drawing.Size(100, 20);
             this.KilometersPerHourTextBox.TabIndex = 4;
+            this.toolTip1.SetToolTip(this.KilometersPerHourTextBox, "The speed at which a near earth object is moving relative to Earth.\r\nThis speed i" +
+        "s taken during the object\'s close approach.");
             // 
             // KilometersPerSecondTextBox
             // 
@@ -556,6 +611,8 @@
             this.KilometersPerSecondTextBox.ReadOnly = true;
             this.KilometersPerSecondTextBox.Size = new System.Drawing.Size(100, 20);
             this.KilometersPerSecondTextBox.TabIndex = 3;
+            this.toolTip1.SetToolTip(this.KilometersPerSecondTextBox, "The speed at which a near earth object is moving relative to Earth.\r\nThis speed i" +
+        "s taken during the object\'s close approach.");
             // 
             // MilesPerHourLabel
             // 
@@ -565,6 +622,8 @@
             this.MilesPerHourLabel.Size = new System.Drawing.Size(78, 13);
             this.MilesPerHourLabel.TabIndex = 2;
             this.MilesPerHourLabel.Text = "Miles per Hour:";
+            this.toolTip1.SetToolTip(this.MilesPerHourLabel, "The speed at which a near earth object is moving relative to Earth.\r\nThis speed i" +
+        "s taken during the object\'s close approach.");
             // 
             // KilometersPerHourLabel
             // 
@@ -574,6 +633,8 @@
             this.KilometersPerHourLabel.Size = new System.Drawing.Size(102, 13);
             this.KilometersPerHourLabel.TabIndex = 1;
             this.KilometersPerHourLabel.Text = "Kilometers per Hour:";
+            this.toolTip1.SetToolTip(this.KilometersPerHourLabel, "The speed at which a near earth object is moving relative to Earth.\r\nThis speed i" +
+        "s taken during the object\'s close approach.");
             // 
             // KilometersPerSecondLabel
             // 
@@ -583,6 +644,8 @@
             this.KilometersPerSecondLabel.Size = new System.Drawing.Size(116, 13);
             this.KilometersPerSecondLabel.TabIndex = 0;
             this.KilometersPerSecondLabel.Text = "Kilometers per Second:";
+            this.toolTip1.SetToolTip(this.KilometersPerSecondLabel, "The speed at which a near earth object is moving relative to Earth.\r\nThis speed i" +
+        "s taken during the object\'s close approach.");
             // 
             // groupBox5
             // 
@@ -609,6 +672,7 @@
             this.MissDistanceLunarTextBox.ReadOnly = true;
             this.MissDistanceLunarTextBox.Size = new System.Drawing.Size(112, 20);
             this.MissDistanceLunarTextBox.TabIndex = 9;
+            this.toolTip1.SetToolTip(this.MissDistanceLunarTextBox, resources.GetString("MissDistanceLunarTextBox.ToolTip"));
             // 
             // MissDistanceAstronomicalTextBox
             // 
@@ -618,6 +682,7 @@
             this.MissDistanceAstronomicalTextBox.ReadOnly = true;
             this.MissDistanceAstronomicalTextBox.Size = new System.Drawing.Size(112, 20);
             this.MissDistanceAstronomicalTextBox.TabIndex = 8;
+            this.toolTip1.SetToolTip(this.MissDistanceAstronomicalTextBox, resources.GetString("MissDistanceAstronomicalTextBox.ToolTip"));
             // 
             // MissDistanceKilometersTextBox
             // 
@@ -627,6 +692,8 @@
             this.MissDistanceKilometersTextBox.ReadOnly = true;
             this.MissDistanceKilometersTextBox.Size = new System.Drawing.Size(112, 20);
             this.MissDistanceKilometersTextBox.TabIndex = 6;
+            this.toolTip1.SetToolTip(this.MissDistanceKilometersTextBox, "The closest distance that a near earth object will come to its orbiting body.\r\nRe" +
+        "presented in kilometers.");
             // 
             // MissDistanceAstronomicalLabel
             // 
@@ -636,6 +703,7 @@
             this.MissDistanceAstronomicalLabel.Size = new System.Drawing.Size(70, 13);
             this.MissDistanceAstronomicalLabel.TabIndex = 3;
             this.MissDistanceAstronomicalLabel.Text = "Astronomical:";
+            this.toolTip1.SetToolTip(this.MissDistanceAstronomicalLabel, resources.GetString("MissDistanceAstronomicalLabel.ToolTip"));
             // 
             // MissDistanceLunarLabel
             // 
@@ -645,6 +713,7 @@
             this.MissDistanceLunarLabel.Size = new System.Drawing.Size(37, 13);
             this.MissDistanceLunarLabel.TabIndex = 2;
             this.MissDistanceLunarLabel.Text = "Lunar:";
+            this.toolTip1.SetToolTip(this.MissDistanceLunarLabel, resources.GetString("MissDistanceLunarLabel.ToolTip"));
             // 
             // MissDistanceKilometersLabel
             // 
@@ -654,6 +723,8 @@
             this.MissDistanceKilometersLabel.Size = new System.Drawing.Size(58, 13);
             this.MissDistanceKilometersLabel.TabIndex = 1;
             this.MissDistanceKilometersLabel.Text = "Kilometers:";
+            this.toolTip1.SetToolTip(this.MissDistanceKilometersLabel, "The closest distance that a near earth object will come to its orbiting body.\r\nRe" +
+        "presented in kilometers.");
             // 
             // MissDistanceMilesTextBox
             // 
@@ -663,6 +734,8 @@
             this.MissDistanceMilesTextBox.ReadOnly = true;
             this.MissDistanceMilesTextBox.Size = new System.Drawing.Size(112, 20);
             this.MissDistanceMilesTextBox.TabIndex = 7;
+            this.toolTip1.SetToolTip(this.MissDistanceMilesTextBox, "The closest distance that a near earth object will come to its orbiting body.\r\nRe" +
+        "presented in miles.");
             // 
             // MissDistanceMilesLabel
             // 
@@ -672,6 +745,8 @@
             this.MissDistanceMilesLabel.Size = new System.Drawing.Size(34, 13);
             this.MissDistanceMilesLabel.TabIndex = 0;
             this.MissDistanceMilesLabel.Text = "Miles:";
+            this.toolTip1.SetToolTip(this.MissDistanceMilesLabel, "The closest distance that a near earth object will come to its orbiting body.\r\nRe" +
+        "presented in miles.");
             // 
             // DatabaseLinkLabel
             // 
@@ -683,6 +758,8 @@
             this.DatabaseLinkLabel.TabIndex = 0;
             this.DatabaseLinkLabel.TabStop = true;
             this.DatabaseLinkLabel.Text = "Small-Body Database Lookup";
+            this.toolTip1.SetToolTip(this.DatabaseLinkLabel, "Leads to the official NASA database on a browser.\r\nMust use \"Show Information\" to" +
+        " update this link.");
             this.DatabaseLinkLabel.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.DatabaseLinkLabel_LinkClicked);
             // 
             // ElementCountLabel
@@ -693,6 +770,7 @@
             this.ElementCountLabel.Size = new System.Drawing.Size(79, 13);
             this.ElementCountLabel.TabIndex = 9;
             this.ElementCountLabel.Text = "Element Count:";
+            this.toolTip1.SetToolTip(this.ElementCountLabel, "The amount of near earth objects.");
             // 
             // ElementCountTextBox
             // 
@@ -702,6 +780,7 @@
             this.ElementCountTextBox.ReadOnly = true;
             this.ElementCountTextBox.Size = new System.Drawing.Size(115, 20);
             this.ElementCountTextBox.TabIndex = 10;
+            this.toolTip1.SetToolTip(this.ElementCountTextBox, "The amount of near earth objects.");
             // 
             // AdvancedSearchGroupBox
             // 
@@ -840,9 +919,11 @@
             this.Controls.Add(this.ShowInformationButton);
             this.Controls.Add(this.NeoListBox);
             this.Controls.Add(this.DatabaseLinkLabel);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
             this.Name = "Form1";
             this.ShowIcon = false;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Near Earth Object Web Service GUI";
             this.RetrieveDataGroupBox.ResumeLayout(false);
             this.RetrieveDataGroupBox.PerformLayout();
@@ -937,6 +1018,7 @@
         private System.Windows.Forms.TextBox RelativeVelocityValueTextBox;
         private System.Windows.Forms.ComboBox RelativeVelocityComboBox2;
         private System.Windows.Forms.Button AdvancedSearchClearButton;
+        private System.Windows.Forms.ToolTip toolTip1;
     }
 }
 

@@ -117,4 +117,125 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <metadata name="toolTip1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 17</value>
+  </metadata>
+  <metadata name="toolTip1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 17</value>
+  </metadata>
+  <data name="SentryObjectTextBox.ToolTip" xml:space="preserve">
+    <value>Refers to a near earth object that is being monitored by NASA's sentry system.
+The sentry impact monitoring system scans the orbits of these objects,
+calculates their future positions, and flags any object with a non-zero probability
+of impacting Earth within the next 100+ years.
+</value>
+  </data>
+  <data name="SentryObjectLabel.ToolTip" xml:space="preserve">
+    <value>Refers to a near earth object that is being monitored by NASA's sentry system.
+The sentry impact monitoring system scans the orbits of these objects,
+calculates their future positions, and flags any object with a non-zero probability
+of impacting Earth within the next 100+ years.</value>
+  </data>
+  <data name="MaximumKilometersTextBox.ToolTip" xml:space="preserve">
+    <value>The maximum potential size an object could have, based on its absolute magnitude and assumed albedo.
+The range between the minimum and maximum potential size is due to the uncertainty about its albedo, or reflectivity.)
+</value>
+  </data>
+  <data name="MaximumMetersLabel.ToolTip" xml:space="preserve">
+    <value>The maximum potential size an object could have, based on its absolute magnitude and assumed albedo.
+The range between the minimum and maximum potential size is due to the uncertainty about its albedo, or reflectivity.)
+</value>
+  </data>
+  <data name="MaximumKilometersLabel.ToolTip" xml:space="preserve">
+    <value>The maximum potential size an object could have, based on its absolute magnitude and assumed albedo.
+The range between the minimum and maximum potential size is due to the uncertainty about its albedo, or reflectivity.)
+</value>
+  </data>
+  <data name="MaximumFeetLabel.ToolTip" xml:space="preserve">
+    <value>The maximum potential size an object could have, based on its absolute magnitude and assumed albedo.
+The range between the minimum and maximum potential size is due to the uncertainty about its albedo, or reflectivity.)
+</value>
+  </data>
+  <data name="MaximumMilesTextBox.ToolTip" xml:space="preserve">
+    <value>The maximum potential size an object could have, based on its absolute magnitude and assumed albedo.
+The range between the minimum and maximum potential size is due to the uncertainty about its albedo, or reflectivity.)
+</value>
+  </data>
+  <data name="MaximumFeetTextBox.ToolTip" xml:space="preserve">
+    <value>The maximum potential size an object could have, based on its absolute magnitude and assumed albedo.
+The range between the minimum and maximum potential size is due to the uncertainty about its albedo, or reflectivity.)
+</value>
+  </data>
+  <data name="MaximumMilesLabel.ToolTip" xml:space="preserve">
+    <value>The maximum potential size an object could have, based on its absolute magnitude and assumed albedo.
+The range between the minimum and maximum potential size is due to the uncertainty about its albedo, or reflectivity.)
+</value>
+  </data>
+  <data name="MaximumMetersTextBox.ToolTip" xml:space="preserve">
+    <value>The maximum potential size an object could have, based on its absolute magnitude and assumed albedo.
+The range between the minimum and maximum potential size is due to the uncertainty about its albedo, or reflectivity.)
+</value>
+  </data>
+  <data name="MinimumKilometersTextBox.ToolTip" xml:space="preserve">
+    <value>The minimum potential size an object could have, based on its absolute magnitude and assumed albedo.
+The range between the minimum and maximum potential size is due to the uncertainty about its albedo, or reflectivity.)
+</value>
+  </data>
+  <data name="MinimumKilometersLabel.ToolTip" xml:space="preserve">
+    <value>The minimum potential size an object could have, based on its absolute magnitude and assumed albedo.
+The range between the minimum and maximum potential size is due to the uncertainty about its albedo, or reflectivity.)
+</value>
+  </data>
+  <data name="MinimumMilesTextBox.ToolTip" xml:space="preserve">
+    <value>The minimum potential size an object could have, based on its absolute magnitude and assumed albedo.
+The range between the minimum and maximum potential size is due to the uncertainty about its albedo, or reflectivity.)
+</value>
+  </data>
+  <data name="MinimumMilesLabel.ToolTip" xml:space="preserve">
+    <value>The minimum potential size an object could have, based on its absolute magnitude and assumed albedo.
+The range between the minimum and maximum potential size is due to the uncertainty about its albedo, or reflectivity.)
+</value>
+  </data>
+  <data name="MinimumMetersTextBox.ToolTip" xml:space="preserve">
+    <value>The minimum potential size an object could have, based on its absolute magnitude and assumed albedo.
+The range between the minimum and maximum potential size is due to the uncertainty about its albedo, or reflectivity.)
+</value>
+  </data>
+  <data name="MinimumMetersLabel.ToolTip" xml:space="preserve">
+    <value>The minimum potential size an object could have, based on its absolute magnitude and assumed albedo.
+The range between the minimum and maximum potential size is due to the uncertainty about its albedo, or reflectivity.)
+</value>
+  </data>
+  <data name="MinimumFeetTextBox.ToolTip" xml:space="preserve">
+    <value>The minimum potential size an object could have, based on its absolute magnitude and assumed albedo.
+The range between the minimum and maximum potential size is due to the uncertainty about its albedo, or reflectivity.)
+</value>
+  </data>
+  <data name="MinimumFeetLabel.ToolTip" xml:space="preserve">
+    <value>The minimum potential size an object could have, based on its absolute magnitude and assumed albedo.
+The range between the minimum and maximum potential size is due to the uncertainty about its albedo, or reflectivity.)
+</value>
+  </data>
+  <data name="MissDistanceLunarTextBox.ToolTip" xml:space="preserve">
+    <value>The closest distance that a near earth object will come to its orbiting body.
+Represented in lunar, the average distance between the Earth and the Moon.
+This is approximately 384,400 kilometers or about 238,855 miles.
+</value>
+  </data>
+  <data name="MissDistanceAstronomicalTextBox.ToolTip" xml:space="preserve">
+    <value>The closest distance that a near earth object will come to its orbiting body.
+Represented in astronomical, the average distance between the Earth and the Sun.
+This is approximately 149.6 million kilometers or about 93 million miles.
+</value>
+  </data>
+  <data name="MissDistanceAstronomicalLabel.ToolTip" xml:space="preserve">
+    <value>The closest distance that a near earth object will come to its orbiting body.
+Represented in astronomical, the average distance between the Earth and the Sun.
+This is approximately 149.6 million kilometers or about 93 million miles.</value>
+  </data>
+  <data name="MissDistanceLunarLabel.ToolTip" xml:space="preserve">
+    <value>The closest distance that a near earth object will come to its orbiting body.
+Represented in lunar, the average distance between the Earth and the Moon.
+This is approximately 384,400 kilometers or about 238,855 miles.</value>
+  </data>
 </root>
