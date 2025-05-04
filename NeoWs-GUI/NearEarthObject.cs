@@ -17,7 +17,6 @@ namespace CS2_Project
     /// </summary>
     public class NearEarthObject
     {
-        //public static List<NearEarthObject> ListOfNearEarthObjects { get; set; } = new List<NearEarthObject>();
 
         public async Task CallAPI(string date)
         {

@@ -47,8 +47,7 @@ namespace NeoWs_GUI
 
         private void AdvancedSearchButton_Click(object sender, EventArgs e)
         {
-            Form2 form2 = new Form2(this);
-            form2.Show();
+            AdvancedSearch();
         }
 
         internal async Task UpdateList()
@@ -67,12 +66,12 @@ namespace NeoWs_GUI
             await NeoWs.CallAPI(date);
         }
 
-        private void DefaultSearch()
+        public void DefaultSearch()
         {
             // Clear the list box and update it using the list
             NeoListBox.Items.Clear();
 
-            foreach (SmallBodyObject smallBodyObject in SmallBodyObject.ListOfSmallBodyObjects)
+            foreach (SmallBodyObject smallBodyObject in SmallBodyObjectManager.Instance.ListOfSmallBodyObjects)
             {
                 NeoListBox.Items.Add(smallBodyObject.Name);
             }
@@ -81,56 +80,109 @@ namespace NeoWs_GUI
             ElementCountTextBox.Text = NeoListBox.Items.Count.ToString();
         }
 
-        internal void AdvancedSearch()
+        private async void AdvancedSearch()
         {
-            // Clear the list box and update it using the list
-            NeoListBox.Items.Clear();
+            // Refresh the list, using the selected date
+            await UpdateList();
 
-            foreach (SmallBodyObject smallBodyObject in SmallBodyObject.ListOfSmallBodyObjects)
+            // If any Absolute Magnitude filters are selected, filter the list
+            if (!string.IsNullOrEmpty(AbsoluteMagnitudeComboBox.SelectedItem.ToString()))
             {
-                NeoListBox.Items.Add(smallBodyObject.Name);
+                string absoluteMagnitudeSelectionBox = AbsoluteMagnitudeComboBox.SelectedItem.ToString();
+                SearchAbsoluteMagnitude(absoluteMagnitudeSelectionBox);
             }
 
-            // Update the date's element count and reset the cursor
-            ElementCountTextBox.Text = NeoListBox.Items.Count.ToString();
+            // This should be the very last thing this method does
+            DefaultSearch();
+        }
+
+        /// <summary>
+        /// This method should only fire if the user has selected a value from the Absolute Magnitude combo box
+        /// </summary>
+        private void SearchAbsoluteMagnitude(string absoluteMagnitudeSelectionBox)
+        {
+            string textBox = AbsoluteMagnitudeValueBox.Text.Trim();
+
+            if (double.TryParse(textBox, out double absoluteMagnitudeValueBox))
+            {
+                // Method will exit if TryParse fails
+                // Otherwise it will continue
+            }
+            else
+            {
+                MessageBox.Show("Please enter a valid numeric value for Absolute Magnitude.");
+                return;
+            }
+
+            // Should only reach this point if TryParse is successful
+            switch (absoluteMagnitudeSelectionBox)
+            {
+                case ("is greater than"):
+                    SmallBodyObjectManager.Instance.ListOfSmallBodyObjects = SmallBodyObjectManager.Instance.ListOfSmallBodyObjects
+                        .Where(obj => Convert.ToDouble(obj.AbsoluteMagnitude) > absoluteMagnitudeValueBox).ToList();
+                    break;
+                case ("is less than"):
+                    SmallBodyObjectManager.Instance.ListOfSmallBodyObjects = SmallBodyObjectManager.Instance.ListOfSmallBodyObjects
+                        .Where(obj => Convert.ToDouble(obj.AbsoluteMagnitude) < absoluteMagnitudeValueBox).ToList();
+                    break;
+                case ("is equal to"):
+                    SmallBodyObjectManager.Instance.ListOfSmallBodyObjects = SmallBodyObjectManager.Instance.ListOfSmallBodyObjects
+                        .Where(obj => Convert.ToDouble(obj.AbsoluteMagnitude) == absoluteMagnitudeValueBox).ToList();
+                    break;
+            }
         }
 
         private void ShowInformation()
         {
             var selectedItem = NeoListBox.SelectedItem;
 
-            // Need to find out how to do this without searching the list.
-            // Maybe it's fine this way? It works.
-            foreach (SmallBodyObject smallBodyObject in SmallBodyObject.ListOfSmallBodyObjects)
+            // Check if an item is selected
+            // If no item is selected, instruct user and exit method
+            if (selectedItem == null)
             {
-                if (smallBodyObject.Name == selectedItem.ToString())
-                {
-                    NameTextBox.Text = smallBodyObject.Name;
-                    IDTextBox.Text = smallBodyObject.ID;
-                    OrbitingBodyTextBox.Text = smallBodyObject.OrbitingBody;
-                    CloseApproachDateTextBox.Text = smallBodyObject.CloseApproachDate;
-                    AbsoluteMagnitudeTextBox.Text = smallBodyObject.AbsoluteMagnitude;
-                    PotentiallyHazardousTextBox.Text = smallBodyObject.IsPotentiallyHazardousAsteroid;
-                    SentryObjectTextBox.Text = smallBodyObject.IsPotentiallyHazardousAsteroid;
-                    MinimumFeetTextBox.Text = smallBodyObject.EstimatedDiameterMinInFeet;
-                    MinimumMetersTextBox.Text = smallBodyObject.EstimatedDiameterMinInMeters;
-                    MinimumMilesTextBox.Text = smallBodyObject.EstimatedDiameterMinInMiles;
-                    MinimumKilometersTextBox.Text = smallBodyObject.EstimatedDiameterMinInKilometers;
-                    MaximumFeetTextBox.Text = smallBodyObject.EstimatedDiameterMaxInFeet;
-                    MaximumMetersTextBox.Text = smallBodyObject.EstimatedDiameterMaxInMeters;
-                    MaximumMilesTextBox.Text = smallBodyObject.EstimatedDiameterMaxInMiles;
-                    MaximumKilometersTextBox.Text = smallBodyObject.EstimatedDiameterMaxInKilometers;
-                    MissDistanceMilesTextBox.Text = smallBodyObject.MissDistanceMiles;
-                    MissDistanceKilometersTextBox.Text = smallBodyObject.MissDistanceKilometers;
-                    MissDistanceLunarTextBox.Text = smallBodyObject.MissDistanceLunar;
-                    MissDistanceAstronomicalTextBox.Text = smallBodyObject.MissDistanceAstronomical;
-                    KilometersPerSecondTextBox.Text = smallBodyObject.RelativeVelocityInKilometersPerSecond;
-                    KilometersPerHourTextBox.Text = smallBodyObject.RelativeVelocityInKilometersPerHour;
-                    MilesPerHourTextBox.Text = smallBodyObject.RelativeVelocityInMilesPerHour;
-                    DatabaseLinkLabel.Text = $"Small-Body Database Lookup for: {smallBodyObject.Name}";
-                    DatabaseLinkLabel.Links.Clear();
-                    DatabaseLinkLabel.Links.Add(0, DatabaseLinkLabel.Text.Length, smallBodyObject.URL);
-                }
+                MessageBox.Show("Please select an item from the list.");
+                return;
+            }
+
+            // Use LINQ to find the matching SmallBodyObject
+            // Uses FirstOrDefault to find the first matching object,
+            // as there should only be one, and the search can stop after it is found
+            var smallBodyObject = SmallBodyObjectManager.Instance.ListOfSmallBodyObjects
+                .FirstOrDefault(obj => obj.Name == selectedItem.ToString());
+
+            // Check to make sure a matching object was found
+            if (smallBodyObject != null)
+            {
+                // Populate the text boxes with the object's properties
+                NameTextBox.Text = smallBodyObject.Name;
+                IDTextBox.Text = smallBodyObject.ID;
+                OrbitingBodyTextBox.Text = smallBodyObject.OrbitingBody;
+                CloseApproachDateTextBox.Text = smallBodyObject.CloseApproachDate;
+                AbsoluteMagnitudeTextBox.Text = smallBodyObject.AbsoluteMagnitude;
+                PotentiallyHazardousTextBox.Text = smallBodyObject.IsPotentiallyHazardousAsteroid;
+                SentryObjectTextBox.Text = smallBodyObject.IsPotentiallyHazardousAsteroid;
+                MinimumFeetTextBox.Text = smallBodyObject.EstimatedDiameterMinInFeet;
+                MinimumMetersTextBox.Text = smallBodyObject.EstimatedDiameterMinInMeters;
+                MinimumMilesTextBox.Text = smallBodyObject.EstimatedDiameterMinInMiles;
+                MinimumKilometersTextBox.Text = smallBodyObject.EstimatedDiameterMinInKilometers;
+                MaximumFeetTextBox.Text = smallBodyObject.EstimatedDiameterMaxInFeet;
+                MaximumMetersTextBox.Text = smallBodyObject.EstimatedDiameterMaxInMeters;
+                MaximumMilesTextBox.Text = smallBodyObject.EstimatedDiameterMaxInMiles;
+                MaximumKilometersTextBox.Text = smallBodyObject.EstimatedDiameterMaxInKilometers;
+                MissDistanceMilesTextBox.Text = smallBodyObject.MissDistanceMiles;
+                MissDistanceKilometersTextBox.Text = smallBodyObject.MissDistanceKilometers;
+                MissDistanceLunarTextBox.Text = smallBodyObject.MissDistanceLunar;
+                MissDistanceAstronomicalTextBox.Text = smallBodyObject.MissDistanceAstronomical;
+                KilometersPerSecondTextBox.Text = smallBodyObject.RelativeVelocityInKilometersPerSecond;
+                KilometersPerHourTextBox.Text = smallBodyObject.RelativeVelocityInKilometersPerHour;
+                MilesPerHourTextBox.Text = smallBodyObject.RelativeVelocityInMilesPerHour;
+                DatabaseLinkLabel.Text = $"Small-Body Database Lookup for: {smallBodyObject.Name}";
+                DatabaseLinkLabel.Links.Clear();
+                DatabaseLinkLabel.Links.Add(0, DatabaseLinkLabel.Text.Length, smallBodyObject.URL);
+            }
+            else
+            {
+                MessageBox.Show("No matching object found.");
             }
         }
     }

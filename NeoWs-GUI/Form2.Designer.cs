@@ -29,39 +29,47 @@
         private void InitializeComponent()
         {
             this.AdvancedSearchGroupBox = new System.Windows.Forms.GroupBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
+            this.AbsoluteMagnitudeComboBox = new System.Windows.Forms.ComboBox();
+            this.AsboluteMagnitudeSearchLabel = new System.Windows.Forms.Label();
             this.Form2Cancel = new System.Windows.Forms.Button();
             this.Form2Search = new System.Windows.Forms.Button();
+            this.AbsoluteMagnitudeValueTextBox = new System.Windows.Forms.TextBox();
             this.AdvancedSearchGroupBox.SuspendLayout();
             this.SuspendLayout();
             // 
             // AdvancedSearchGroupBox
             // 
-            this.AdvancedSearchGroupBox.Controls.Add(this.textBox1);
-            this.AdvancedSearchGroupBox.Controls.Add(this.label1);
+            this.AdvancedSearchGroupBox.Controls.Add(this.AbsoluteMagnitudeValueTextBox);
+            this.AdvancedSearchGroupBox.Controls.Add(this.AbsoluteMagnitudeComboBox);
+            this.AdvancedSearchGroupBox.Controls.Add(this.AsboluteMagnitudeSearchLabel);
             this.AdvancedSearchGroupBox.Location = new System.Drawing.Point(13, 13);
             this.AdvancedSearchGroupBox.Name = "AdvancedSearchGroupBox";
-            this.AdvancedSearchGroupBox.Size = new System.Drawing.Size(200, 100);
+            this.AdvancedSearchGroupBox.Size = new System.Drawing.Size(329, 100);
             this.AdvancedSearchGroupBox.TabIndex = 0;
             this.AdvancedSearchGroupBox.TabStop = false;
             this.AdvancedSearchGroupBox.Text = "Advanced Search";
             // 
-            // textBox1
+            // AbsoluteMagnitudeComboBox
             // 
-            this.textBox1.Location = new System.Drawing.Point(94, 19);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(100, 20);
-            this.textBox1.TabIndex = 1;
+            this.AbsoluteMagnitudeComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.AbsoluteMagnitudeComboBox.FormattingEnabled = true;
+            this.AbsoluteMagnitudeComboBox.Items.AddRange(new object[] {
+            "is greater than",
+            "is less than",
+            "is equal to"});
+            this.AbsoluteMagnitudeComboBox.Location = new System.Drawing.Point(120, 20);
+            this.AbsoluteMagnitudeComboBox.Name = "AbsoluteMagnitudeComboBox";
+            this.AbsoluteMagnitudeComboBox.Size = new System.Drawing.Size(97, 21);
+            this.AbsoluteMagnitudeComboBox.TabIndex = 3;
             // 
-            // label1
+            // AsboluteMagnitudeSearchLabel
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(6, 22);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(35, 13);
-            this.label1.TabIndex = 2;
-            this.label1.Text = "label1";
+            this.AsboluteMagnitudeSearchLabel.AutoSize = true;
+            this.AsboluteMagnitudeSearchLabel.Location = new System.Drawing.Point(7, 23);
+            this.AsboluteMagnitudeSearchLabel.Name = "AsboluteMagnitudeSearchLabel";
+            this.AsboluteMagnitudeSearchLabel.Size = new System.Drawing.Size(101, 13);
+            this.AsboluteMagnitudeSearchLabel.TabIndex = 2;
+            this.AsboluteMagnitudeSearchLabel.Text = "Absolute Magnitude";
             // 
             // Form2Cancel
             // 
@@ -83,11 +91,18 @@
             this.Form2Search.UseVisualStyleBackColor = true;
             this.Form2Search.Click += new System.EventHandler(this.Form2Search_Click);
             // 
+            // AbsoluteMagnitudeValueTextBox
+            // 
+            this.AbsoluteMagnitudeValueTextBox.Location = new System.Drawing.Point(223, 19);
+            this.AbsoluteMagnitudeValueTextBox.Name = "AbsoluteMagnitudeValueTextBox";
+            this.AbsoluteMagnitudeValueTextBox.Size = new System.Drawing.Size(100, 20);
+            this.AbsoluteMagnitudeValueTextBox.TabIndex = 4;
+            // 
             // Form2
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(227, 157);
+            this.ClientSize = new System.Drawing.Size(416, 157);
             this.ControlBox = false;
             this.Controls.Add(this.Form2Search);
             this.Controls.Add(this.Form2Cancel);
@@ -106,9 +121,10 @@
         #endregion
 
         private System.Windows.Forms.GroupBox AdvancedSearchGroupBox;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label AsboluteMagnitudeSearchLabel;
         private System.Windows.Forms.Button Form2Cancel;
         private System.Windows.Forms.Button Form2Search;
+        private System.Windows.Forms.ComboBox AbsoluteMagnitudeComboBox;
+        private System.Windows.Forms.TextBox AbsoluteMagnitudeValueTextBox;
     }
 }

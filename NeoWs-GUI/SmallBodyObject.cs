@@ -9,34 +9,8 @@ namespace NeoWs_GUI
     /// This class was intended to hold the actual values of each actual asteroid rather than the functionality
     /// Updates the static list of near earth objects in the parent class
     /// </summary>
-    internal class SmallBodyObject : NearEarthObject
+    public class SmallBodyObject : CelestialObject
     {
-        public string ID { get; set; }
-        public string Name { get; set; }
-        public string URL { get; set; }
-        public string AbsoluteMagnitude { get; set; }
-        public string EstimatedDiameterMinInKilometers { get; set; }
-        public string EstimatedDiameterMinInMeters { get; set; }
-        public string EstimatedDiameterMinInMiles { get; set; }
-        public string EstimatedDiameterMinInFeet { get; set; }
-        public string EstimatedDiameterMaxInKilometers { get; set; }
-        public string EstimatedDiameterMaxInMeters { get; set; }
-        public string EstimatedDiameterMaxInMiles { get; set; }
-        public string EstimatedDiameterMaxInFeet { get; set; }
-        public string CloseApproachDate { get; set; }
-        public string RelativeVelocityInKilometersPerSecond { get; set; }
-        public string RelativeVelocityInKilometersPerHour { get; set; }
-        public string RelativeVelocityInMilesPerHour { get; set; }
-        public string MissDistanceAstronomical { get; set; }
-        public string MissDistanceLunar { get; set; }
-        public string MissDistanceKilometers { get; set; }
-        public string MissDistanceMiles { get; set; }
-        public string OrbitingBody { get; set; }
-        public string IsPotentiallyHazardousAsteroid { get; set; }
-        public string IsSentryObject { get; set; }
-
-        public static List<SmallBodyObject> ListOfSmallBodyObjects { get; set; } = new List<SmallBodyObject>();
-
         /// <summary>
         /// As each JObject is converted to an object, it is also anonymously added to a list.
         /// </summary>
@@ -46,7 +20,7 @@ namespace NeoWs_GUI
         public void ConvertJObjectToList(JObject jsonObject, string startDate)
         {
             // If the user wants to refresh, the list must be cleared to avoid duplicates.
-            ListOfSmallBodyObjects.Clear();
+            SmallBodyObjectManager.Instance.ListOfSmallBodyObjects.Clear();
 
             // Create an object for every near earth object returned from the API call.
             foreach (var jObject in jsonObject["near_earth_objects"][startDate])
@@ -97,8 +71,42 @@ namespace NeoWs_GUI
                 }
 
                 // Finally, add the created object to the list.
-                ListOfSmallBodyObjects.Add(smallBodyObject);
+                SmallBodyObjectManager.Instance.ListOfSmallBodyObjects.Add(smallBodyObject);
             }
         }
+    }
+
+    /// <summary>
+    /// Singleton design pattern to ensure that only one instance of the SmallBodyObjectManager exists
+    /// The list is a central part of this application, and it is also used frequently
+    /// It's important to have a single point of access to this list
+    /// </summary>
+    public class SmallBodyObjectManager
+    {
+        // This holds the instance of the singleton class
+        // It is static because it belongs to the class itself, not an instance of it
+        // It's private, so it can only be changed within the class
+        private static SmallBodyObjectManager _instance;
+
+        // Since _instance is private, it can only be accessed through the public Instance property
+        public static SmallBodyObjectManager Instance
+        {
+            // get specifies what happens if the instance is trying to be read
+            get
+            {
+                // If _instance is null, mostly likely because it hasn't been created yet,
+                if (_instance == null)
+                {
+                    // So it will create a new one
+                    _instance = new SmallBodyObjectManager();
+                }
+                // Then return it
+                return _instance;
+            }
+        }
+
+        // This is the list of small body objects
+        // If the contents of the list are manipulated in any way, it will refer to the Instance of this class
+        public List<SmallBodyObject> ListOfSmallBodyObjects { get; set; } = new List<SmallBodyObject>();
     }
 }

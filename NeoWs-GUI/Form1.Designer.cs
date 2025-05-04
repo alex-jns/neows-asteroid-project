@@ -88,6 +88,10 @@
             this.DatabaseLinkLabel = new System.Windows.Forms.LinkLabel();
             this.ElementCountLabel = new System.Windows.Forms.Label();
             this.ElementCountTextBox = new System.Windows.Forms.TextBox();
+            this.AdvancedSearchGroupBox = new System.Windows.Forms.GroupBox();
+            this.AbsoluteMagnitudeAdvancedLabel = new System.Windows.Forms.Label();
+            this.AbsoluteMagnitudeComboBox = new System.Windows.Forms.ComboBox();
+            this.AbsoluteMagnitudeValueBox = new System.Windows.Forms.TextBox();
             this.RetrieveDataGroupBox.SuspendLayout();
             this.GeneralInformationGroupBox.SuspendLayout();
             this.EstimatedDiameterGroupBox.SuspendLayout();
@@ -95,13 +99,14 @@
             this.MinimumGroupBox.SuspendLayout();
             this.groupBox4.SuspendLayout();
             this.groupBox5.SuspendLayout();
+            this.AdvancedSearchGroupBox.SuspendLayout();
             this.SuspendLayout();
             // 
             // SearchButton
             // 
             this.SearchButton.Location = new System.Drawing.Point(6, 46);
             this.SearchButton.Name = "SearchButton";
-            this.SearchButton.Size = new System.Drawing.Size(91, 23);
+            this.SearchButton.Size = new System.Drawing.Size(188, 23);
             this.SearchButton.TabIndex = 0;
             this.SearchButton.Text = "Search";
             this.SearchButton.UseVisualStyleBackColor = true;
@@ -127,7 +132,6 @@
             // 
             // RetrieveDataGroupBox
             // 
-            this.RetrieveDataGroupBox.Controls.Add(this.AdvancedSearchButton);
             this.RetrieveDataGroupBox.Controls.Add(this.DateTextBox);
             this.RetrieveDataGroupBox.Controls.Add(this.DateLabel);
             this.RetrieveDataGroupBox.Controls.Add(this.SearchButton);
@@ -140,11 +144,11 @@
             // 
             // AdvancedSearchButton
             // 
-            this.AdvancedSearchButton.Location = new System.Drawing.Point(103, 46);
+            this.AdvancedSearchButton.Location = new System.Drawing.Point(641, 415);
             this.AdvancedSearchButton.Name = "AdvancedSearchButton";
-            this.AdvancedSearchButton.Size = new System.Drawing.Size(91, 23);
+            this.AdvancedSearchButton.Size = new System.Drawing.Size(101, 23);
             this.AdvancedSearchButton.TabIndex = 11;
-            this.AdvancedSearchButton.Text = "Advanced";
+            this.AdvancedSearchButton.Text = "Advanced Search";
             this.AdvancedSearchButton.UseVisualStyleBackColor = true;
             this.AdvancedSearchButton.Click += new System.EventHandler(this.AdvancedSearchButton_Click);
             // 
@@ -514,7 +518,7 @@
             this.groupBox4.Controls.Add(this.KilometersPerSecondLabel);
             this.groupBox4.Location = new System.Drawing.Point(219, 305);
             this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(239, 100);
+            this.groupBox4.Size = new System.Drawing.Size(239, 104);
             this.groupBox4.TabIndex = 7;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Relative Velocity";
@@ -692,11 +696,53 @@
             this.ElementCountTextBox.Size = new System.Drawing.Size(115, 20);
             this.ElementCountTextBox.TabIndex = 10;
             // 
+            // AdvancedSearchGroupBox
+            // 
+            this.AdvancedSearchGroupBox.Controls.Add(this.AbsoluteMagnitudeValueBox);
+            this.AdvancedSearchGroupBox.Controls.Add(this.AbsoluteMagnitudeComboBox);
+            this.AdvancedSearchGroupBox.Controls.Add(this.AbsoluteMagnitudeAdvancedLabel);
+            this.AdvancedSearchGroupBox.Location = new System.Drawing.Point(465, 305);
+            this.AdvancedSearchGroupBox.Name = "AdvancedSearchGroupBox";
+            this.AdvancedSearchGroupBox.Size = new System.Drawing.Size(277, 104);
+            this.AdvancedSearchGroupBox.TabIndex = 11;
+            this.AdvancedSearchGroupBox.TabStop = false;
+            this.AdvancedSearchGroupBox.Text = "Advanced Search";
+            // 
+            // AbsoluteMagnitudeAdvancedLabel
+            // 
+            this.AbsoluteMagnitudeAdvancedLabel.AutoSize = true;
+            this.AbsoluteMagnitudeAdvancedLabel.Location = new System.Drawing.Point(7, 21);
+            this.AbsoluteMagnitudeAdvancedLabel.Name = "AbsoluteMagnitudeAdvancedLabel";
+            this.AbsoluteMagnitudeAdvancedLabel.Size = new System.Drawing.Size(101, 13);
+            this.AbsoluteMagnitudeAdvancedLabel.TabIndex = 0;
+            this.AbsoluteMagnitudeAdvancedLabel.Text = "Absolute Magnitude";
+            // 
+            // AbsoluteMagnitudeComboBox
+            // 
+            this.AbsoluteMagnitudeComboBox.FormattingEnabled = true;
+            this.AbsoluteMagnitudeComboBox.Items.AddRange(new object[] {
+            "is greater than",
+            "is less than",
+            "is equal to"});
+            this.AbsoluteMagnitudeComboBox.Location = new System.Drawing.Point(114, 19);
+            this.AbsoluteMagnitudeComboBox.Name = "AbsoluteMagnitudeComboBox";
+            this.AbsoluteMagnitudeComboBox.Size = new System.Drawing.Size(96, 21);
+            this.AbsoluteMagnitudeComboBox.TabIndex = 1;
+            // 
+            // AbsoluteMagnitudeValueBox
+            // 
+            this.AbsoluteMagnitudeValueBox.Location = new System.Drawing.Point(216, 20);
+            this.AbsoluteMagnitudeValueBox.Name = "AbsoluteMagnitudeValueBox";
+            this.AbsoluteMagnitudeValueBox.Size = new System.Drawing.Size(55, 20);
+            this.AbsoluteMagnitudeValueBox.TabIndex = 2;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(754, 450);
+            this.Controls.Add(this.AdvancedSearchButton);
+            this.Controls.Add(this.AdvancedSearchGroupBox);
             this.Controls.Add(this.ElementCountTextBox);
             this.Controls.Add(this.ElementCountLabel);
             this.Controls.Add(this.groupBox5);
@@ -724,6 +770,8 @@
             this.groupBox4.PerformLayout();
             this.groupBox5.ResumeLayout(false);
             this.groupBox5.PerformLayout();
+            this.AdvancedSearchGroupBox.ResumeLayout(false);
+            this.AdvancedSearchGroupBox.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -791,6 +839,10 @@
         private System.Windows.Forms.TextBox MissDistanceKilometersTextBox;
         private System.Windows.Forms.TextBox MissDistanceMilesTextBox;
         private System.Windows.Forms.Button AdvancedSearchButton;
+        private System.Windows.Forms.GroupBox AdvancedSearchGroupBox;
+        private System.Windows.Forms.TextBox AbsoluteMagnitudeValueBox;
+        private System.Windows.Forms.ComboBox AbsoluteMagnitudeComboBox;
+        private System.Windows.Forms.Label AbsoluteMagnitudeAdvancedLabel;
     }
 }
 
