@@ -4,13 +4,19 @@ This project is a simple C# GUI application that allows users to request a singl
 ## Table of Contents
 - [Installation](#installation)
 - [Usage](#usage)
-- [Contributing](#contributing)
 - [License](#license)
 - [Acknowledgements](#acknowledgements)
 
 ## Installation
 
-To be determined.
+### 1. Download the latest release.
+
+- Go to the [Releases page](https://github.com/alex-jns/neows-asteroid-project/releases) of the project.
+- Download the latest version of the executable (only supports Windows).
+
+### 2. Run the executable.
+
+After downloading, simply open the downloaded file to run the program.
 
 ## Usage
 
@@ -30,13 +36,18 @@ To be determined.
 * Once the “Show Information” button is clicked, the link label in the center-left will update, and clicking it will lead to the NASA small body database for further information.
 * For more information on the data, hover the mouse over the label of textBox to see the tooltips.
 
-## Contributing
-
-To be determined.
-
 ## License
 
-To be determined.
+This project is licensed under the [MIT License](LICENSE).
+
+### Summary
+
+The MIT License allows you to:
+
+- Use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software.
+- The software is provided "as is," without warranty of any kind.
+
+For more details, please refer to the full license text in the [LICENSE file](LICENSE).
 
 ## Acknowledgements
 
