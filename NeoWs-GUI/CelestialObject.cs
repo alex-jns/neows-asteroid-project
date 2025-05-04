@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace NeoWs_GUI
+﻿namespace NeoWs_GUI
 {
     /// <summary>
     /// Contains all of the properties that make up a small body object

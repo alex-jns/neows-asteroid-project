@@ -1,5 +1,4 @@
-﻿using NeoWs_GUI;
-using Newtonsoft.Json;
+﻿using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using RestSharp;
 using System;
@@ -9,7 +8,7 @@ using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace CS2_Project
+namespace NeoWs_GUI
 {
     /// <summary>
     /// When a GET request is sent to the API, it returns a JSON string.

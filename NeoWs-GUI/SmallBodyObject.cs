@@ -1,5 +1,4 @@
-﻿using CS2_Project;
-using Newtonsoft.Json.Linq;
+﻿using Newtonsoft.Json.Linq;
 using System.Collections.Generic;
 
 namespace NeoWs_GUI
